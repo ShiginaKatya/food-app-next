@@ -1,6 +1,6 @@
 # Food App (Next.js)
 
-## 🔗 Ссылки
+## Ссылки
 
 - **Production (Vercel):** [https://food-app-next-alpha.vercel.app](https://food-app-next-alpha.vercel.app/)
 - **Исходный репозиторий(Vite):** [https://github.com/ShiginaKatya/food-app](https://github.com/ShiginaKatya/food-app)
