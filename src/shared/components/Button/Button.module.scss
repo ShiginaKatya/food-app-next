@@ -1,0 +1,30 @@
+@use '@styles/variables' as var;
+@use '@styles/mixins' as *;
+
+.btn{
+  @include flex-center;
+  border: none;
+  font-size: 18px;
+  gap: var.$space-xxs;
+  background-color: var.$brand;
+  min-height: 52px;
+  padding: var.$space-s var.$space-l;
+  @include app-border;
+  color: white;
+  font-family: var(--font-roboto) !important;
+  line-height: 18px;
+
+  &:not(:disabled):hover{
+    background-color: var.$brand-hover;
+  }
+
+  &:active{
+    background-color: var.$brand-active;
+  }
+
+  &_disabled, &_disabled:hover{
+    background-color: var.$brand-disabled;
+    cursor: not-allowed;  
+  }
+
+}

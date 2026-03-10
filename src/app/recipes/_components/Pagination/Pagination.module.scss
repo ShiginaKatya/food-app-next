@@ -1,0 +1,53 @@
+@use '@styles/variables' as var;
+@use '@styles/mixins' as *;
+
+.paginate{
+  display: flex;
+  margin: 0 auto;
+  button{
+    cursor: pointer;
+    outline: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    width: 38px;
+    height: 42px;
+    margin: 0;
+    font-family: inherit;
+    font-size: 18px;
+    border: none;
+  }
+  &__arrow {
+    background: none;
+    &:disabled{
+      path{
+        fill: #AFADB5;
+      }
+    }
+    svg{
+      display: block;
+    }
+
+    &_left{
+      transform: rotate(90deg);
+      transform-origin: center;
+    }
+
+    &_right{
+      transform: rotate(270deg);
+      transform-origin: center;
+    }
+    
+  }
+
+  &__numbers{
+    background: transparent;
+    
+    &_active {
+      background: var.$brand;
+      color: white;
+    }
+  }
+  
+}

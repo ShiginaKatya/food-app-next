@@ -1,0 +1,7 @@
+@use '@styles/variables' as var;
+@use '@styles/mixins' as *;
+
+.item__caption{
+  @include flex-align;
+  gap: calc(var.$space-xxs / 2)
+}
