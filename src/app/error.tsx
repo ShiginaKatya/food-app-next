@@ -11,7 +11,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
         An error has occurred
       </Text>
       <Text view="p-20">{error.message}</Text>
-      <Button onClick={() => reset()}>Попробовать снова</Button>
+      <Button onClick={() => reset()}>Try again</Button>
     </main>
   );
 }
