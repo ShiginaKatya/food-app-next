@@ -1,0 +1,82 @@
+@use '@styles/variables' as var;
+@use '@styles/mixins' as *;
+
+.header{
+  background-color: white;
+  @include flex-align;
+  justify-content: space-between;
+  padding: var.$space-s var.$padding-page;
+  gap: calc(3 * var.$space-l);
+
+  @include dekstop {
+    padding: var.$space-s var.$padding-page-d;
+    gap: var.$space-l;
+  }
+  @include mobile {
+    padding: var.$space-s var.$padding-page-d;
+  }
+
+  &__logo{
+    @include flex-align;
+    gap: var.$space-l;
+  }
+
+  &__personal{
+    @include flex-align;
+    gap: var.$space-m;
+
+    &__link{
+      display: inline-flex;
+    }
+  }
+
+
+  @include tablet{
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__nav{
+      order: 3;
+      flex-basis: 100%;
+
+    }
+  }
+}
+
+.nav{
+  flex-grow: 1;
+
+  &__list{
+    @include flex-align;
+    justify-content: flex-start;
+    gap: var.$space-m;
+
+    @include dekstop {
+      gap: var.$space-xs;
+
+      &__link{
+        text-align: center;
+      }
+    }
+
+    @include tablet{
+      flex-wrap: wrap;
+    }
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    &__link:hover p{
+      font-weight: 600 !important;
+      color: var.$brand;
+    }
+
+  }
+
+}
+
+
+
+
+

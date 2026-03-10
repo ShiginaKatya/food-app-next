@@ -1,0 +1,55 @@
+@use '@styles/variables' as var;
+@use '@styles/mixins' as *;
+
+.input{
+  font-size: 16px;
+  justify-content: space-between; 
+  @include flex-align;
+  @include app-border;
+  @include padding-inputs;
+  height: 52px;
+  background-color: white;
+  border: 1px solid white;
+  gap: var.$space-xxs;
+  margin: 0;
+  line-height: var.$space-l;
+  letter-spacing: 0%;
+
+  input{
+    border: none;
+    background-color: none;
+    background: transparent; 
+    border: none;             
+    outline: none;            
+    padding: 0;               
+    margin: 0;                
+    appearance: none;         
+    box-shadow: none;         
+    font-family: inherit;    
+    font-size: inherit;
+    flex-grow: 1;
+    color: black;
+
+    &:hover, &:active{
+      border: none;
+    }
+
+    &::placeholder{
+      color: #AFADB5;
+    }
+
+  }
+
+  &:focus-within{
+    border: 1px solid var.$brand;
+  }
+
+  &_disabled{
+    color: #AFADB5;
+  }
+
+}
+
+.logo{
+  margin: auto;
+}
