@@ -47,7 +47,7 @@
     @include mobile {
       gap: calc(var.$space-l / 2);
     }
-   }
+  }
 
   &__search {
     display: flex;
@@ -82,8 +82,6 @@
     }
   }
 
-    
-
   &__drops {
     display: flex;
     justify-content: flex-end;
@@ -117,7 +115,4 @@
       @include flex-center;
     }
   }
-
-  
 }
-

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import * as React from 'react';
 
 import s from './Header.module.scss';
+import DynamicFavoritesCounter from '../DynamicFavoritesCounter';
 import FavoriteIcon from '../icons/FavoriteIcon';
 import LogoIcon from '../icons/LogoIcon';
 import PersonIcon from '../icons/PersonIcon';
@@ -48,6 +49,7 @@ const Header = () => {
       <div className={s.header__personal}>
         <Link href="/favorites" className={s['header__personal-link']}>
           <FavoriteIcon color="accent" />
+          <DynamicFavoritesCounter />
         </Link>
         <Link href="/" className={s['header__personal-link']}>
           <PersonIcon color="accent" />
