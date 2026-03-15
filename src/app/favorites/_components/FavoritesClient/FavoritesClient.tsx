@@ -29,9 +29,15 @@ const FavoritesClient = () => {
       <Text view="title" tag="h1" weight="bold">
         Favorites Recipes
       </Text>
-      <Text view="p-20" weight="medium">
-        Сохранено: {favorites?.length} рецептов
-      </Text>
+      {favorites?.length === 0 ? (
+        <Text view="p-16" color="secondary">
+          Your favorites is empty. Add recipe from a recipes page.
+        </Text>
+      ) : (
+        <Text view="p-16" color="secondary">
+          Saved: {favorites?.length} recipes
+        </Text>
+      )}
       {isLoading ? (
         <div className={s.main__loader}>
           <Loader size="m" />

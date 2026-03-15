@@ -4,12 +4,12 @@
 .check {
   @include grid-center;
   grid-auto-flow: column;
-  width: 40px;
-  height: 40px;
+  width: var.$space-l;
+  height: var.$space-l;
   background-color: white;
   margin: 0;
   padding: 0;
-  @include app-border;
+  border-radius: calc( var.$space-xxs / 4);
   border: 1px solid white;
   box-sizing: border-box;
 

@@ -21,6 +21,7 @@
     &-icon_flip {
       transform: rotate(90deg);
       display: inline-block;
+      flex-shrink: 0;
     }
 
     @include mobile {

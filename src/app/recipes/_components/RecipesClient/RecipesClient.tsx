@@ -110,9 +110,14 @@ const RecipesClient = () => {
     });
   }, [page]);
 
-  const cleanInput = () => {
-    setInputValue('');
-    updateFilters('searchValue', '');
+  const clearFilter = (
+    key: 'searchValue' | 'maxTotalTime' | 'maxPreparationTime' | 'maxCookingTime'
+  ) => {
+    if (key === 'searchValue') setInputValue('');
+    if (key === 'maxTotalTime') setTotalTimeInput('');
+    if (key === 'maxPreparationTime') setPrepTimeInput('');
+    if (key === 'maxCookingTime') setCookTimeInput('');
+    updateFilters(key, null);
   };
 
   const favoriteAction = useCallback(
@@ -149,7 +154,11 @@ const RecipesClient = () => {
               onChange={setInputValue}
               afterSlot={
                 inputValue && (
-                  <button type="button" className={s['main__search-btn']} onClick={cleanInput}>
+                  <button
+                    type="button"
+                    className={s['main__search-btn']}
+                    onClick={() => clearFilter('searchValue')}
+                  >
                     &times;
                   </button>
                 )
@@ -210,6 +219,17 @@ const RecipesClient = () => {
               value={totalTimeInput}
               onChange={(val) => setTotalTimeInput(val.replace(/\D/g, ''))}
               onBlur={() => applyNumericFilter('maxTotalTime', totalTimeInput)}
+              afterSlot={
+                totalTimeInput && (
+                  <button
+                    type="button"
+                    className={s['main__search-btn']}
+                    onClick={() => clearFilter('maxTotalTime')}
+                  >
+                    &times;
+                  </button>
+                )
+              }
             />
             <Input
               className={s['main__filters-field']}
@@ -217,6 +237,17 @@ const RecipesClient = () => {
               value={prepTimeInput}
               onChange={(val) => setPrepTimeInput(val.replace(/\D/g, ''))}
               onBlur={() => applyNumericFilter('maxPreparationTime', prepTimeInput)}
+              afterSlot={
+                prepTimeInput && (
+                  <button
+                    type="button"
+                    className={s['main__search-btn']}
+                    onClick={() => clearFilter('maxPreparationTime')}
+                  >
+                    &times;
+                  </button>
+                )
+              }
             />
             <Input
               className={s['main__filters-field']}
@@ -224,6 +255,17 @@ const RecipesClient = () => {
               value={cookTimeInput}
               onChange={(val) => setCookTimeInput(val.replace(/\D/g, ''))}
               onBlur={() => applyNumericFilter('maxCookingTime', cookTimeInput)}
+              afterSlot={
+                cookTimeInput && (
+                  <button
+                    type="button"
+                    className={s['main__search-btn']}
+                    onClick={() => clearFilter('maxCookingTime')}
+                  >
+                    &times;
+                  </button>
+                )
+              }
             />
           </li>
         </ul>
@@ -233,6 +275,10 @@ const RecipesClient = () => {
           </div>
         ) : isError ? (
           <div>Error: {error.message}</div>
+        ) : data?.data.length === 0 ? (
+          <Text view="p-16" color="secondary">
+            There are no such recipes. Try something else or try later.
+          </Text>
         ) : (
           <ul className={s['main__list']}>
             {data?.data.map((recipe) => {

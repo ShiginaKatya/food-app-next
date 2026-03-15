@@ -2,15 +2,17 @@
 import parse from 'html-react-parser';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useRecipeQuery } from '@api/queries';
+import Button from '@components/Button';
 import ArrowDownIcon from '@components/icons/ArrowDownIcon';
 import EquipIcon from '@components/icons/EquipIcon';
 import IngredIcon from '@components/icons/IngredIcon';
 import Loader from '@components/Loader';
 import Text from '@components/Text';
 import { useRecentlyViewed } from '@hooks/useRecentlyViewed';
+import { useShoppingList } from '@hooks/useShoppingList';
 
 import s from './RecipeClient.module.scss';
 
@@ -19,11 +21,25 @@ const RecipeClient = () => {
   const { id } = useParams<{ id: string }>();
   const { data: recipe, isLoading, isError, error } = useRecipeQuery(id);
   const { addRecipe } = useRecentlyViewed();
+  const { addIngredients, items } = useShoppingList();
+  const [added, setAdded] = useState(false);
+
+  const alreadyAdded = recipe?.data
+    ? recipe.data.ingradients.every((ing) => items.some((i) => i.id === ing.id))
+    : false;
+
+  const handleAddToList = useCallback(() => {
+    if (!recipe?.data) return;
+    addIngredients(recipe.data.ingradients, id, recipe.data.name);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  }, [recipe, addIngredients, id]);
 
   useEffect(() => {
     if (!recipe?.data) return;
     addRecipe(recipe.data);
-  }, [recipe?.data, addRecipe]);
+  }, [recipe, addRecipe]);
+
   if (isLoading) {
     return (
       <div className={s.recipe__loader}>
@@ -116,6 +132,9 @@ const RecipeClient = () => {
                   );
                 })}
             </ul>
+            <Button onClick={handleAddToList} disabled={alreadyAdded}>
+              {added ? 'Added' : alreadyAdded ? 'In list' : '+ Shopping list'}
+            </Button>
           </div>
           <div className={s.recipe__equip}>
             <Text view="p-20" weight="bold">
@@ -144,9 +163,7 @@ const RecipeClient = () => {
                 <Text view="p-16" weight="bold">
                   Step {index + 1}
                 </Text>
-                <Text view="p-14" className={s['recipe__steps-info']}>
-                  {direction.description}
-                </Text>
+                <Text view="p-14">{direction.description}</Text>
               </li>
             ))}
           </ul>

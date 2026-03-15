@@ -2,10 +2,10 @@
 @use "@styles/mixins" as *;
 
 .main {
-  position: relative;
   min-height: 100vh;
   display: grid;
   gap: calc(2 * var.$space-xl);
+  align-content: start;
   @include padding-page;
 
   @include mobile {

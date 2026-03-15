@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import s from './Header.module.scss';
 import DynamicFavoritesCounter from '../DynamicFavoritesCounter';
+import DynamicProductsCounter from '../DynamicProductsCounter';
 import FavoriteIcon from '../icons/FavoriteIcon';
 import LogoIcon from '../icons/LogoIcon';
 import PersonIcon from '../icons/PersonIcon';
@@ -31,7 +32,10 @@ const Header = () => {
           </li>
           <li className={s['header__list-link']}>
             <Text tag="p" view="p-16">
-              Products
+              <Link href="/products" className={s['header__personal-link']}>
+                Products
+                <DynamicProductsCounter />
+              </Link>
             </Text>
           </li>
           <li className={s['header__list-link']}>
