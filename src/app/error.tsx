@@ -6,7 +6,7 @@ import s from './error.module.scss';
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {
   return (
-    <main className={s.main_error}>
+    <main className={s.main}>
       <Text tag="h1" weight="bold" view="title">
         An error has occurred
       </Text>

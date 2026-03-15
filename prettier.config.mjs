@@ -9,6 +9,14 @@ const config = {
   useTabs: false,
   semi: true,
   trailingComma: 'es5',
+  overrides: [
+    {
+      files: ['*.scss', '*.css'],
+      options: {
+        singleQuote: false,
+      },
+    },
+  ],
 };
 
 export default config;

@@ -1,81 +1,78 @@
-@use '@styles/variables' as var;
+@use "@styles/variables" as var;
 
-.txt{
-  &__view{
-    
-    &-title{
+.txt {
+  &_view {
+    &-title {
       font-size: 44px;
       line-height: 48px;
       font-weight: bold;
       letter-spacing: 0%;
     }
 
-    &-p-20{
+    &_p-20 {
       font-size: 20px;
       line-height: 24px;
       letter-spacing: 0%;
-    } 
+    }
 
-    &-p-18{
+    &_p-18 {
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0%;
     }
 
-    &-p-16{
+    &_p-16 {
       font-size: 16px;
       line-height: 20px;
       letter-spacing: 0%;
     }
-    
-    &-p-14{
+
+    &_p-14 {
       font-size: 14px;
       line-height: 18px;
       letter-spacing: 0%;
     }
 
-    &-button{
+    &_button {
       font-size: 18px;
       line-height: 18px;
       letter-spacing: 0%;
     }
   }
-  
-  &__color{
 
-    &-inherit{
+  &_color { 
+    &_inherit {
       color: inherit;
     }
 
-    &-primary{
+    &_primary {
       color: black;
     }
 
-    &-secondary{
-      color: #AFADB5;
+    &_secondary {
+      color: #afadb5;
     }
 
-    &-accent{
+    &_accent {
       color: var.$brand;
     }
   }
-  
-  &__weight{
 
-    &-normal{
+  &_weight {
+    &_normal {
       font-weight: 400;
     }
 
-    &-medium{
+    &_medium {
       font-weight: 500;
     }
 
-    &-bold{
+    &_bold {
       font-weight: 700;
     }
   }
 
-  &__clamp{
+  &_clamp {
     --max-lines: 1;
     display: -webkit-box;
     overflow: hidden;
@@ -83,6 +80,4 @@
     line-clamp: var(--max-lines);
     -webkit-line-clamp: var(--max-lines);
   }
-
 }
-

@@ -3,9 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useMemo } from 'react';
 import * as React from 'react';
 
-import { type RecipeList, getRecipe } from '@api/requests';
-import { useQueryClient } from '@tanstack/react-query';
-
+import { type RecipeList } from '@api/requests';
 import Button from '@components/Button';
 import Card from '@components/Card';
 import ClockIcon from '@components/icons/ClockIcon';
@@ -30,14 +28,15 @@ const RecipeCard = ({ recipe, isSaved, onToggle, isPending }: RecipeCardProps) =
     return stripped;
   }, [recipe.summary]);
 
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const prefetchRecipe = () => {
-    queryClient.prefetchQuery({
-      queryKey: ['recipe', recipe.documentId],
-      queryFn: () => getRecipe(String(recipe.documentId)),
-      staleTime: 60 * 1000,
-    });
+    // queryClient.prefetchQuery({
+    //   queryKey: ['recipe', recipe.documentId],
+    //   queryFn: () => getRecipe(String(recipe.documentId)),
+    //   staleTime: 60 * 1000,
+    // });
+    router.prefetch(`/recipes/${recipe.documentId}`);
   };
 
   const saveRecipe = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,16 +45,12 @@ const RecipeCard = ({ recipe, isSaved, onToggle, isPending }: RecipeCardProps) =
     onToggle(recipe.id, isSaved);
   };
   return (
-    <li
-      className={s.list__item}
-      onClick={() => router.push(`/recipes/${recipe.documentId}`)}
-      onMouseEnter={prefetchRecipe}
-    >
+    <li onClick={() => router.push(`/recipes/${recipe.documentId}`)} onMouseEnter={prefetchRecipe}>
       <Card
         image={recipe.images[0].formats?.small.url || recipe.images[0].url}
         title={recipe.name}
         captionSlot={
-          <span className={s.item__caption}>
+          <span className={s.caption}>
             <ClockIcon color="accent" />
             {recipe.totalTime} minutes
           </span>
@@ -63,7 +58,7 @@ const RecipeCard = ({ recipe, isSaved, onToggle, isPending }: RecipeCardProps) =
         subtitle={parsedSummary}
         contentSlot={`${recipe.calories} kcal`}
         actionSlot={
-          <Button onClick={saveRecipe} disabled={isPending}>
+          <Button type="button" onClick={saveRecipe} disabled={isPending}>
             {isPending ? '...' : isSaved ? 'Remove' : 'Save'}
           </Button>
         }

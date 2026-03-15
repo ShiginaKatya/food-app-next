@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import * as React from 'react';
 
-import classNames from 'classnames';
-
 import s from './Header.module.scss';
 import FavoriteIcon from '../icons/FavoriteIcon';
 import LogoIcon from '../icons/LogoIcon';
@@ -15,32 +13,32 @@ const Header = () => {
       <div className={s.header__logo}>
         <LogoIcon />
         <Text tag="p" view="p-20" weight="bold">
-          <a href="">Food Client</a>
+          <Link href="/">Food Client</Link>
         </Text>
       </div>
-      <nav className={classNames(s.header__nav, s.nav)}>
-        <ul className={s.nav__list}>
-          <li className={s.nav__list__link}>
+      <nav className={s.header__nav}>
+        <ul className={s.header__list}>
+          <li className={s['header__list-link']}>
             <Text tag="p" view="p-16">
               <Link href="/recipes">Recipes</Link>
             </Text>
           </li>
-          <li className={s.nav__list__link}>
+          <li className={s['header__list-link']}>
             <Text tag="p" view="p-16">
-              Meal Categories
+              <Link href="/categories">Meal Categories</Link>
             </Text>
           </li>
-          <li className={s.nav__list__link}>
+          <li className={s['header__list-link']}>
             <Text tag="p" view="p-16">
               Products
             </Text>
           </li>
-          <li className={s.nav__list__link}>
+          <li className={s['header__list-link']}>
             <Text tag="p" view="p-16">
               Menu Items
             </Text>
           </li>
-          <li className={s.nav__list__link}>
+          <li className={s['header__list-link']}>
             <Text tag="p" view="p-16">
               Meal Planning
             </Text>
@@ -48,10 +46,10 @@ const Header = () => {
         </ul>
       </nav>
       <div className={s.header__personal}>
-        <Link href="/favorites" className={s.header__personal__link}>
+        <Link href="/favorites" className={s['header__personal-link']}>
           <FavoriteIcon color="accent" />
         </Link>
-        <Link href="/" className={s.header__personal__link}>
+        <Link href="/" className={s['header__personal-link']}>
           <PersonIcon color="accent" />
         </Link>
       </div>

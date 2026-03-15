@@ -1,7 +1,7 @@
-@use '@styles/variables' as var;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
 
-.check{
+.check {
   @include grid-center;
   grid-auto-flow: column;
   width: 40px;
@@ -13,7 +13,7 @@
   border: 1px solid white;
   box-sizing: border-box;
 
-  &__input{
+  &__input {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -26,28 +26,26 @@
     overflow: hidden;
   }
 
-  &:not(:disabled):hover{
+  &:not(:disabled):hover {
     border: 1px solid var.$brand;
   }
 
-  &_disabled, &:disabled{
-    background-color: #FFFFFF80;
+  &_disabled,
+  &:disabled {
+    background-color: #ffffff80;
     cursor: not-allowed;
-    border: 1px solid #FFFFFF00;
+    border: 1px solid #ffffff00;
     pointer-events: none;
 
-    .check__icon path{
-      stroke: #00000033
+    .check__icon path {
+      stroke: #00000033;
     }
   }
 
-  &__icon{
-    width: calc(100% + 2px); 
+  &__icon {
+    width: calc(100% + 2px);
     height: calc(100% + 2px);
-    margin: -1px; 
+    margin: -1px;
     display: block;
   }
 }
-
-
-

@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { getJWT } from './register_auth';
 import { addFavorites, removeFavorites } from './requests';
+import { log, logError } from '../utils/log';
 
 export const useGetJWTMutation = () => {
   const queryClient = useQueryClient();
@@ -12,14 +13,12 @@ export const useGetJWTMutation = () => {
     onSuccess: (data) => {
       if (data.jwt) {
         localStorage.setItem('token', data.jwt);
-        // eslint-disable-next-line no-console
-        console.log('JWT succes', data.jwt);
+        log('JWT succes', data.jwt);
         queryClient.invalidateQueries();
       }
     },
     onError: (error) => {
-      // eslint-disable-next-line no-console
-      console.error('Error login', error);
+      logError('Error login', error);
     },
   });
 };
@@ -36,8 +35,7 @@ export const useAddFavoritesMutation = () => {
       queryClient.invalidateQueries({ queryKey: ['recipes'] });
     },
     onError: (error) => {
-      // eslint-disable-next-line no-console
-      console.error('fail add favorites', error.message);
+      logError('fail add favorites', error.message);
     },
   });
 };
@@ -54,8 +52,7 @@ export const useRemoveFavoritesMutation = () => {
       queryClient.invalidateQueries({ queryKey: ['recipes'] });
     },
     onError: (error) => {
-      // eslint-disable-next-line no-console
-      console.error('fail remove fovorites', error.message);
+      logError('fail remove fovorites', error.message);
     },
   });
 };

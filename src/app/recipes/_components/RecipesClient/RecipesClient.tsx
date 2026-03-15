@@ -3,36 +3,21 @@ import Image from 'next/image';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useState, useMemo, useDeferredValue, useEffect, useCallback } from 'react';
 
-import {
-  // useGetJWTMutation,
-  useAddFavoritesMutation,
-  useRemoveFavoritesMutation,
-} from '@api/mutations';
+import { useAddFavoritesMutation, useRemoveFavoritesMutation } from '@api/mutations';
 import { useRecipesQuery, useCategoriesQuery, useFavoritesQuery } from '@api/queries';
-import banner from '@public/food-banner.png';
-import classNames from 'classnames';
-
-import s from '@/app/recipes/page.module.scss';
-
 import Button from '@components/Button';
 import SearchIcon from '@components/icons/SearchIcon';
 import Input from '@components/Input';
 import Loader from '@components/Loader';
 import MultiDropdown from '@components/MultiDropdown';
 import Text from '@components/Text';
+import banner from '@public/food-banner.png';
 
+import s from './RecipesClient.module.scss';
 import Pagination from '../Pagination/Pagination';
 import RecipeCard from '../RecipeCard/RecipeCard';
 
 const RecipesClient = () => {
-  // const { mutate: gotJWT } = useGetJWTMutation();
-
-  // useEffect(() => {
-  //   if (!localStorage.getItem('token')) {
-  //     gotJWT();
-  //   }
-  // }, [gotJWT]);
-
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -58,18 +43,21 @@ const RecipesClient = () => {
     variables: removeV,
   } = useRemoveFavoritesMutation();
 
-  const updateFilters = (key: string, value: string | number | null) => {
-    const prev = new URLSearchParams(searchParams.toString());
-    if (!value) {
-      prev.delete(key);
-    } else {
-      prev.set(key, String(value));
-    }
-    if (key !== 'page') {
-      prev.set('page', '1');
-    }
-    router.replace(`${pathname}?${prev.toString()}`, { scroll: false });
-  };
+  const updateFilters = useCallback(
+    (key: string, value: string | number | null) => {
+      const prev = new URLSearchParams(searchParams.toString());
+      if (!value) {
+        prev.delete(key);
+      } else {
+        prev.set(key, String(value));
+      }
+      if (key !== 'page') {
+        prev.set('page', '1');
+      }
+      router.replace(`${pathname}?${prev.toString()}`, { scroll: false });
+    },
+    [searchParams, router, pathname]
+  );
 
   const categoryOptions = useMemo(() => {
     const optionsList =
@@ -105,35 +93,35 @@ const RecipesClient = () => {
 
   return (
     <main className={s.main}>
-      <Image className={s.banner_img} src={banner} loading="eager" alt="" />
-      <div className={classNames(s.main__content, s.content)}>
-        <Text className={s.content__text} view="p-20">
-          Find the perfect food and <span className={s.decor}>drink ideas</span> for every occasion,
-          from <span className={s.decor}>weeknight dinners</span> to{' '}
-          <span className={s.decor}>holiday feasts</span>.
+      <Image className={s.main__img} src={banner} loading="eager" alt="" />
+      <div className={s.main__content}>
+        <Text className={s.main__text} view="p-20">
+          Find the perfect food and <span className={s['main__text_decor']}>drink ideas</span> for{' '}
+          every occasion, from <span className={s['main__text_decor']}>weeknight dinners</span> to{' '}
+          <span className={s['main__text_decor']}>holiday feasts</span>.
         </Text>
-        <ul className={s.content__inputs}>
-          <li className={s.inputs__search}>
+        <ul className={s['main__inputs']}>
+          <li className={s['main__search']}>
             <Input
-              className={s.search}
+              className={s['main__search-input']}
               placeholder="Enter dishes"
               value={inputValue}
               onChange={setInputValue}
               afterSlot={
                 inputValue && (
-                  <button className={s.search__btn} onClick={cleanInput}>
+                  <button type="button" className={s['main__search-btn']} onClick={cleanInput}>
                     &times;
                   </button>
                 )
               }
             />
-            <Button onClick={() => updateFilters('searchValue', deferredValue)}>
-              <SearchIcon className={s['icon-white']} />
+            <Button type="button" onClick={() => updateFilters('searchValue', deferredValue)}>
+              <SearchIcon className={s['main__search-icon_white']} />
             </Button>
           </li>
-          <li className={s.inputs__drop}>
+          <li className={s['main__drops']}>
             <MultiDropdown
-              className={s.drop}
+              className={s['main__drops-drop']}
               options={categoryOptions}
               value={
                 categoryId
@@ -156,13 +144,13 @@ const RecipesClient = () => {
           </li>
         </ul>
         {isLoading ? (
-          <div className={s.content__loader}>
+          <div className={s['main__loader']}>
             <Loader size="m" />
           </div>
         ) : isError ? (
           <div>Error: {error.message}</div>
         ) : (
-          <ul className={s.content__list}>
+          <ul className={s['main__list']}>
             {data?.data.map((recipe) => {
               const isSaved = favorites?.some((item) => item.recipe.id === recipe.id);
               const isProcessing =
@@ -180,7 +168,7 @@ const RecipesClient = () => {
           </ul>
         )}
         {isFetching && (
-          <div className={s.content__loader_s}>
+          <div className={s['main__loader_s']}>
             <Loader size="s" />
           </div>
         )}

@@ -1,3 +1,4 @@
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import type { Metadata } from 'next';
 
 import { getRecipe } from '@/api/requests';
@@ -20,8 +21,18 @@ export async function generateMetadata({ params }: MetaProps): Promise<Metadata>
   };
 }
 
-const RecipePage = () => {
-  return <RecipeClient />;
+const RecipePage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['recipe', id],
+    queryFn: () => getRecipe(id),
+  });
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <RecipeClient />
+    </HydrationBoundary>
+  );
 };
 
 export default RecipePage;

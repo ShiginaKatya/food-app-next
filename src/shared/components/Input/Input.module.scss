@@ -1,9 +1,9 @@
-@use '@styles/variables' as var;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
 
-.input{
+.input {
   font-size: 16px;
-  justify-content: space-between; 
+  justify-content: space-between;
   @include flex-align;
   @include app-border;
   @include padding-inputs;
@@ -15,41 +15,40 @@
   line-height: var.$space-l;
   letter-spacing: 0%;
 
-  input{
+  input {
     border: none;
     background-color: none;
-    background: transparent; 
-    border: none;             
-    outline: none;            
-    padding: 0;               
-    margin: 0;                
-    appearance: none;         
-    box-shadow: none;         
-    font-family: inherit;    
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    appearance: none;
+    box-shadow: none;
+    font-family: inherit;
     font-size: inherit;
     flex-grow: 1;
     color: black;
 
-    &:hover, &:active{
+    &:hover,
+    &:active {
       border: none;
     }
 
-    &::placeholder{
-      color: #AFADB5;
+    &::placeholder {
+      color: #afadb5;
     }
-
   }
 
-  &:focus-within{
+  &:focus-within {
     border: 1px solid var.$brand;
   }
 
-  &_disabled{
-    color: #AFADB5;
+  &_disabled {
+    color: #afadb5;
   }
-
 }
 
-.logo{
+.logo {
   margin: auto;
 }

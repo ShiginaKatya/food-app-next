@@ -1,6 +1,12 @@
 @use "@styles/variables" as var;
 @use "@styles/mixins" as *;
 
+.main {
+  @include padding-page;
+  display: grid;
+  gap: calc(2 * var.$space-xl);
+}
+
 .loader {
   @include page-loader;
 }

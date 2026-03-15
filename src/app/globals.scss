@@ -1,18 +1,20 @@
-@use '@styles/variables';
+@use "@styles/variables" as var;
 
-html, body {
+html,
+body {
   font-family: var(--font-roboto), sans-serif !important;
   margin: 0;
   padding: 0;
+  // background-color: #FFC0763B;
 }
 
-ul{
+ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 a {
-  text-decoration: none; 
+  text-decoration: none;
   color: inherit;
 }
 
@@ -33,6 +35,6 @@ pre {
   margin: 0;
 }
 
-.app{
-  background-color: #FFC0763B;
+.app {
+  background-color: #ffc0763b;
 }

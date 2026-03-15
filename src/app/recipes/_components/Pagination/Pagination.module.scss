@@ -1,15 +1,16 @@
-@use '@styles/variables' as var;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
 
-.paginate{
+.paginate {
   display: flex;
   margin: 0 auto;
-  button{
+
+  &__btn {
     cursor: pointer;
     outline: inherit;
     text-decoration: none;
     display: inline-flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     width: 38px;
     height: 42px;
@@ -18,36 +19,37 @@
     font-size: 18px;
     border: none;
   }
+
   &__arrow {
     background: none;
-    &:disabled{
-      path{
-        fill: #AFADB5;
+
+    &:disabled {
+      path {
+        fill: #afadb5;
       }
     }
-    svg{
+
+    svg {
       display: block;
     }
 
-    &_left{
+    &_left {
       transform: rotate(90deg);
       transform-origin: center;
     }
 
-    &_right{
+    &_right {
       transform: rotate(270deg);
       transform-origin: center;
     }
-    
   }
 
-  &__numbers{
+  &__numbers {
     background: transparent;
-    
+
     &_active {
       background: var.$brand;
       color: white;
     }
   }
-  
 }

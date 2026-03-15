@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 import { getRecipes, getCategories } from '@/api/requests';
 
-import RecipesClient from './_components/RecipesClient/RecipesClient';
+import RecipesClient from './_components/RecipesClient';
 
 export const metadata: Metadata = {
   title: 'Food Client | List of recipes',
