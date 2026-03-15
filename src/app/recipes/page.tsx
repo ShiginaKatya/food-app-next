@@ -14,13 +14,25 @@ export const metadata: Metadata = {
 const RecipesPage = async ({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string; searchValue?: string; categoryId?: string }>;
+  searchParams: Promise<{
+    page?: string;
+    searchValue?: string;
+    categoryId?: string;
+    rating?: string;
+    maxTotalTime?: string;
+    maxPreparationTime?: string;
+    maxCookingTime?: string;
+  }>;
 }) => {
   const queryClient = new QueryClient();
   const filters = await searchParams;
   const page = Number(filters.page) || 1;
   const searchValue = filters.searchValue || '';
   const categoryId = filters.categoryId ? Number(filters.categoryId) : null;
+  const rating = filters.rating ? Number(filters.rating) : null;
+  const maxTotalTime = filters.maxTotalTime ? Number(filters.maxTotalTime) : null;
+  const maxPreparationTime = filters.maxPreparationTime ? Number(filters.maxPreparationTime) : null;
+  const maxCookingTime = filters.maxCookingTime ? Number(filters.maxCookingTime) : null;
 
   await Promise.all([
     queryClient.prefetchQuery({
@@ -28,8 +40,26 @@ const RecipesPage = async ({
       queryFn: getCategories,
     }),
     queryClient.prefetchQuery({
-      queryKey: ['recipes', page, searchValue, categoryId],
-      queryFn: () => getRecipes(page, searchValue, categoryId),
+      queryKey: [
+        'recipes',
+        page,
+        searchValue,
+        categoryId,
+        rating,
+        maxTotalTime,
+        maxPreparationTime,
+        maxCookingTime,
+      ],
+      queryFn: () =>
+        getRecipes(
+          page,
+          searchValue,
+          categoryId,
+          rating,
+          maxTotalTime,
+          maxPreparationTime,
+          maxCookingTime
+        ),
     }),
   ]);
   return (

@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import parse from 'html-react-parser';
 
@@ -10,6 +11,7 @@ import EquipIcon from '@components/icons/EquipIcon';
 import IngredIcon from '@components/icons/IngredIcon';
 import Loader from '@components/Loader';
 import Text from '@components/Text';
+import { useRecentlyViewed } from '@hooks/useRecentlyViewed';
 
 import s from './RecipeClient.module.scss';
 
@@ -17,6 +19,12 @@ const RecipeClient = () => {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
   const { data: recipe, isLoading, isError, error } = useRecipeQuery(id);
+  const { addRecipe } = useRecentlyViewed();
+
+  useEffect(() => {
+    if (!recipe?.data) return;
+    addRecipe(recipe.data);
+  }, [recipe?.data, addRecipe]);
   if (isLoading) {
     return (
       <div className={s.recipe__loader}>

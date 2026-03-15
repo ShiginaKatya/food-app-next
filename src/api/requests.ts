@@ -74,7 +74,11 @@ type RecipeResponse = {
 export const getRecipes = async (
   page: number,
   searchValue: string | null,
-  categoryId: number | null
+  categoryId: number | null,
+  rating: number | null,
+  maxTotalTime: number | null,
+  maxPreparationTime: number | null,
+  maxCookingTime: number | null
 ) => {
   const filters: Record<string, unknown> = {};
   if (searchValue) {
@@ -82,6 +86,18 @@ export const getRecipes = async (
   }
   if (categoryId) {
     filters.category = { id: { $eq: categoryId } };
+  }
+  if (rating) {
+    filters.rating = { $eq: rating };
+  }
+  if (maxTotalTime) {
+    filters.totalTime = { $lte: maxTotalTime };
+  }
+  if (maxPreparationTime) {
+    filters.preparationTime = { $lte: maxPreparationTime };
+  }
+  if (maxCookingTime) {
+    filters.cookingTime = { $lte: maxCookingTime };
   }
   const query = qs.stringify(
     {

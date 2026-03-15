@@ -28,14 +28,7 @@ const RecipeCard = ({ recipe, isSaved, onToggle, isPending }: RecipeCardProps) =
     return stripped;
   }, [recipe.summary]);
 
-  // const queryClient = useQueryClient();
-
   const prefetchRecipe = () => {
-    // queryClient.prefetchQuery({
-    //   queryKey: ['recipe', recipe.documentId],
-    //   queryFn: () => getRecipe(String(recipe.documentId)),
-    //   staleTime: 60 * 1000,
-    // });
     router.prefetch(`/recipes/${recipe.documentId}`);
   };
 
@@ -45,7 +38,11 @@ const RecipeCard = ({ recipe, isSaved, onToggle, isPending }: RecipeCardProps) =
     onToggle(recipe.id, isSaved);
   };
   return (
-    <li onClick={() => router.push(`/recipes/${recipe.documentId}`)} onMouseEnter={prefetchRecipe}>
+    <li
+      role="button"
+      onClick={() => router.push(`/recipes/${recipe.documentId}`)}
+      onMouseEnter={prefetchRecipe}
+    >
       <Card
         image={recipe.images[0].formats?.small.url || recipe.images[0].url}
         title={recipe.name}
@@ -59,7 +56,7 @@ const RecipeCard = ({ recipe, isSaved, onToggle, isPending }: RecipeCardProps) =
         contentSlot={`${recipe.calories} kcal`}
         actionSlot={
           <Button type="button" onClick={saveRecipe} disabled={isPending}>
-            {isPending ? '...' : isSaved ? 'Remove' : 'Save'}
+            <span suppressHydrationWarning> {isPending ? '...' : isSaved ? 'Remove' : 'Save'}</span>
           </Button>
         }
       />
