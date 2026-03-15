@@ -2,7 +2,6 @@ import { Roboto } from 'next/font/google';
 
 import './globals.scss';
 import QueryProvider from '@/providers/QueryProvider';
-
 import Header from '@components/Header';
 
 const roboto = Roboto({

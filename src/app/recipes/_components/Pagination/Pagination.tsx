@@ -1,7 +1,6 @@
 'use client';
-import React, { useMemo } from 'react';
-
 import classNames from 'classnames';
+import React, { useMemo } from 'react';
 
 import ArrowDownIcon from '@components/icons/ArrowDownIcon';
 

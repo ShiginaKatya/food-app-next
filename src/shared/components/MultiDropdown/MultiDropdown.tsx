@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useMemo, useEffect, useCallback } from 'react';
-
 import classNames from 'classnames';
+import React, { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 
 import ArrowDownIcon from '../icons/ArrowDownIcon';
 import Input from '../Input';

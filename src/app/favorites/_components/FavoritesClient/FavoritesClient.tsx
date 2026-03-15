@@ -2,7 +2,6 @@
 import { useCallback } from 'react';
 
 import RecipeCard from '@/app/recipes/_components/RecipeCard/RecipeCard';
-
 import { useRemoveFavoritesMutation } from '@api/mutations';
 import { useFavoritesQuery } from '@api/queries';
 import Loader from '@components/Loader';

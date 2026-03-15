@@ -9,12 +9,7 @@
   background-position: top right;
 
   &__loader {
-    width: 100%;
-    height: 100%;
-    @include flex-center;
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include page-loader;
   }
 
   &__title {

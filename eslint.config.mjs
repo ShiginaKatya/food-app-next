@@ -33,6 +33,13 @@ export default tseslint.config(
       prettier,
       import: import_,
     },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
+    },
     rules: {
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/consistent-type-imports': 'error',
@@ -53,20 +60,19 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '@/**',
+              pattern: '@*/**',
               group: 'internal',
               position: 'before',
             },
           ],
-          pathGroupsExcludedImportTypes: ['builtin'],
+          pathGroupsExcludedImportTypes: ['builtin', 'external'],
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
-      'react/display-name': 'off', 
+      'react/display-name': 'off',
       'react/self-closing-comp': 'error',
       'react/no-unknown-property': 'error',
-      'react/self-closing-comp': 'error',
       '@next/next/no-img-element': 'error',
     },
   }

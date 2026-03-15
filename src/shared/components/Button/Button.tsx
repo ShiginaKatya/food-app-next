@@ -1,6 +1,5 @@
-import * as React from 'react';
-
 import classNames from 'classnames';
+import * as React from 'react';
 
 import Loader from '../Loader';
 import s from './Button.module.scss';

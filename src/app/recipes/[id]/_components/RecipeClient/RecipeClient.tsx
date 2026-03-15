@@ -1,9 +1,8 @@
 'use client';
+import parse from 'html-react-parser';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-
-import parse from 'html-react-parser';
 
 import { useRecipeQuery } from '@api/queries';
 import ArrowDownIcon from '@components/icons/ArrowDownIcon';

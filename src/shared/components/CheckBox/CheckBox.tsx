@@ -1,6 +1,5 @@
-import * as React from 'react';
-
 import classNames from 'classnames';
+import * as React from 'react';
 
 import s from './CheckBox.module.scss';
 import CheckIcon from '../icons/CheckIcon';

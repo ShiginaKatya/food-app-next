@@ -16,4 +16,8 @@
       color: var.$brand;
     }
   }
+
+  &__loader {
+    @include page-loader;
+  }
 }

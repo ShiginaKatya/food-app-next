@@ -1,6 +1,5 @@
-import type * as React from 'react';
-
 import classNames from 'classnames';
+import type * as React from 'react';
 
 import s from './Icon.module.scss';
 

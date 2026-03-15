@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-
 import qs from 'qs';
 
 const BASE_URL = 'https://front-school-strapi.ktsdev.ru/api/recipes';

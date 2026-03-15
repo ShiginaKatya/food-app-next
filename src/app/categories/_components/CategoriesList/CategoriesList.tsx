@@ -2,12 +2,23 @@
 import Link from 'next/link';
 
 import { useCategoriesQuery } from '@/api/queries';
-import Text from '@/shared/components/Text';
+import Loader from '@components/Loader';
+import Text from '@components/Text';
 
 import s from './CategoriesList.module.scss';
 
 const CategoriesList = () => {
-  const { data: categories } = useCategoriesQuery();
+  const { data: categories, isLoading, isError, error } = useCategoriesQuery();
+  if (isLoading) {
+    return (
+      <div className={s.categories__loader}>
+        <Loader size="m" />
+      </div>
+    );
+  }
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
   return (
     <ul className={s.categories}>
       {categories?.data.map((category) => {
