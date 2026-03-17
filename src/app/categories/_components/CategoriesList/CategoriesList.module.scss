@@ -1,0 +1,24 @@
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var.$space-s;
+
+  &__item {
+    border: 1px solid black;
+    padding: var.$space-s;
+    border-radius: var.$border-radius;
+    transition: border-color 0.3s, color 0.3s;
+
+    &:hover {
+      border-color: var.$brand;
+      color: var.$brand;
+    }
+  }
+
+  &__loader {
+    @include page-loader;
+  }
+}

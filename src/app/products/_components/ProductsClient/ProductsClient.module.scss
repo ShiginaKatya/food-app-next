@@ -1,0 +1,85 @@
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
+
+.main {
+  min-height: 100vh;
+  @include padding-page;
+  display: grid;
+  gap: calc(2 * var.$space-xl);
+  align-content: start; 
+
+  &__header {
+    @include flex-align;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var.$space-m;
+  }
+
+  &__groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: calc(4 * var.$space-m);
+    justify-content: space-between;
+    align-items: start;
+
+    @include mobile {
+      gap: var.$space-m;
+    }
+  }
+
+  &__group {
+    display: grid;
+    gap: var.$space-m;
+
+    &-title {
+      padding-bottom: var.$space-xxs;
+      border-bottom: 2px solid var.$brand;
+    }
+
+    &-list {
+      display: grid;
+      gap: var.$space-xxs;
+    }
+
+    &-item {
+      @include flex-align;
+      gap: var.$space-m;
+      padding: var.$space-xxs var.$space-xs;
+      border-radius: var.$border-radius;
+      transition: background-color 0.15s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+
+      &_checked {
+        opacity: 0.45;
+      }
+    }
+
+    &-name {
+      flex: 1;
+
+      &_checked {
+        text-decoration: line-through;
+      }
+    }
+
+    &-remove {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 18px;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.15s;
+
+      &:hover {
+        color: var.$brand;
+      }
+    }
+  }
+}
+
+

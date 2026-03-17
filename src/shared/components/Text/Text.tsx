@@ -1,6 +1,5 @@
-import * as React from 'react';
-
 import classNames from 'classnames';
+import * as React from 'react';
 
 import s from './Text.module.scss';
 
@@ -34,10 +33,10 @@ const Text: React.FC<TextProps> = ({
     <Tag
       className={classNames(
         s.txt,
-        view && s[`txt__view-${view}`],
-        s[`txt__color-${color}`],
-        s[`txt__weight-${weight}`],
-        maxLines && s.txt__clamp,
+        view && s[`txt_view_${view}`],
+        s[`txt_color_${color}`],
+        s[`txt_weight_${weight}`],
+        maxLines && s.txt_clamp,
         className
       )}
       style={maxLines ? ({ '--max-lines': maxLines } as React.CSSProperties) : undefined}
@@ -47,4 +46,4 @@ const Text: React.FC<TextProps> = ({
   );
 };
 
-export default Text;
+export default React.memo(Text);

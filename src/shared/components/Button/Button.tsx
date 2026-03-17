@@ -1,6 +1,5 @@
-import React from 'react';
-
 import classNames from 'classnames';
+import * as React from 'react';
 
 import Loader from '../Loader';
 import s from './Button.module.scss';
@@ -35,4 +34,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default React.memo(Button);

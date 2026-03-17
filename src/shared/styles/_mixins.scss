@@ -1,64 +1,63 @@
-@use '@styles/variables' as var;
+@use "@styles/variables" as var;
 
-@mixin flex-center{
+@mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin grid-center{
+@mixin grid-center {
   display: grid;
   align-items: center;
   justify-items: center;
 }
 
-@mixin app-border{
+@mixin app-border {
   border-radius: var.$border-radius;
 }
 
-@mixin flex-align{
+@mixin flex-align {
   display: flex;
   align-items: center;
 }
 
-@mixin padding-inputs{
+@mixin padding-inputs {
   padding: var.$space-s var.$space-xs;
 }
 
-@mixin dekstop{
+@mixin dekstop {
   @media (max-width: var.$breakpoint-lg) {
     @content;
   }
 }
 
-@mixin tablet{
+@mixin tablet {
   @media (max-width: var.$breakpoint-md) {
     @content;
   }
 }
 
-@mixin mobile{
+@mixin mobile {
   @media (max-width: var.$breakpoint-sm) {
     @content;
   }
 }
 
-@mixin padding-page {
-  padding: calc(2*var.$space-s) var.$padding-page;
-
-  @include dekstop{
-    padding: calc(2*var.$space-s) var.$padding-page-d;
-  }
-
-  @include mobile{
-    padding: calc(2*var.$space-s) var.$padding-page-m;
-  }
+@mixin page-loader {
+  position: fixed;
+  inset: 0;
+  @include flex-center;
+  z-index: 100;
 }
 
+@mixin padding-page {
+  padding: calc(2 * var.$space-s) var.$padding-page;
 
+  @include dekstop {
+    padding: calc(2 * var.$space-s) var.$padding-page-d;
+  }
 
-
-
-
- 
-
+  @include mobile {
+    padding: calc(2 * var.$space-s) var.$padding-page-m;
+  }
+}

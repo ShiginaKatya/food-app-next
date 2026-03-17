@@ -1,0 +1,180 @@
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
+
+.recipe {
+  @include padding-page;
+  min-height: 100vh;
+  background-image: url("/Pattern.png");
+  background-repeat: no-repeat;
+  background-position: top right;
+
+  &__loader {
+    @include page-loader;
+  }
+
+  &__title {
+    @include flex-align;
+    gap: var.$space-m;
+    padding-top: calc(2 * var.$space-xl);
+    padding-bottom: calc(2 * var.$space-l);
+
+    &-icon_flip {
+      transform: rotate(90deg);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    @include mobile {
+      h1 {
+        font-size: 36px;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: calc(var.$space-xl * 2);
+  }
+
+  &__overview {
+    @include flex-align;
+    justify-content: space-between;
+    width: 95%;
+
+    @include tablet {
+      flex-direction: column;
+      gap: var.$space-xl;
+      width: 100%;
+    }
+
+    &-image {
+      width: 40%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border-radius: var.$border-radius;
+      object-fit: cover;
+
+      @include tablet {
+        width: 100%;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: calc(2 * var.$space-xl);
+      column-gap: calc(4 * var.$space-xl);
+      justify-content: space-between;
+
+      @include dekstop {
+        column-gap: calc(2 * var.$space-l);
+        row-gap: calc(2 * var.$space-l);
+      }
+
+      @include tablet {
+        column-gap: var.$space-xl;
+        row-gap: var.$space-xl;
+      }
+
+      @include mobile {
+        column-gap: var.$space-xs;
+        row-gap: var.$space-xs;
+      }
+    }
+
+    &-item {
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: var.$space-xxs;
+    }
+  }
+
+  &__description {
+    margin: auto;
+    padding: calc(2 * var.$space-m);
+    @include app-border;
+    background-color: rgba(var.$brand, 0.33);
+
+    @include mobile {
+      padding: var.$space-m;
+    }
+  }
+
+  &__needs {
+    display: flex;
+    gap: calc(2 * var.$space-l);
+    align-items: flex-start;
+
+    @include tablet {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: var.$space-xl;
+      row-gap: var.$space-xxs;
+
+      @include mobile {
+        column-gap: var.$space-xs;
+      }
+    }
+
+    &-item {
+      @include flex-align;
+      gap: var.$space-m;
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      min-width: var.$space-xl;
+    }
+  }
+
+  &__ingred,
+  &__equip {
+    display: grid;
+    gap: var.$space-xl;
+    width: fit-content;
+  }
+
+  &__ingred {
+    position: relative;
+    padding-right: var.$space-l;
+    border-right: 2px solid var.$brand;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      right: -5px;
+      width: var.$space-xxs;
+      height: var.$space-xxs;
+      background-color: var.$brand;
+      border-radius: 50%;
+    }
+  }
+
+  &__steps {
+    display: grid;
+    gap: var.$space-xl;
+    width: 65%;
+
+    @include tablet {
+      width: 100%;
+    }
+
+    &-list {
+      display: grid;
+      gap: var.$space-m;
+    }
+
+    &-item {
+      display: grid;
+      gap: calc(var.$space-l / 2);
+    }
+  }
+}

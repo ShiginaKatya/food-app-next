@@ -1,7 +1,7 @@
-@use '@styles/variables' as var;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
 
-.btn{
+.btn {
   @include flex-center;
   border: none;
   font-size: 18px;
@@ -13,18 +13,19 @@
   color: white;
   font-family: var(--font-roboto) !important;
   line-height: 18px;
+  transition: background-color 0.2s;
 
-  &:not(:disabled):hover{
+  &:not(:disabled):hover {
     background-color: var.$brand-hover;
   }
 
-  &:active{
+  &:active {
     background-color: var.$brand-active;
   }
 
-  &_disabled, &_disabled:hover{
+  &_disabled,
+  &_disabled:hover {
     background-color: var.$brand-disabled;
-    cursor: not-allowed;  
+    cursor: not-allowed;
   }
-
 }

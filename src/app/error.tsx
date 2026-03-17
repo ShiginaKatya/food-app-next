@@ -1,17 +1,8 @@
 'use client';
-import Button from '@/shared/components/Button';
-import Text from '@/shared/components/Text';
+import Error from '@components/Error';
 
-import s from './error.module.scss';
+const ErrorPage = ({ error, reset }: { error: Error; reset: () => void }) => {
+  return <Error error={error} reset={reset} />;
+};
 
-export default function Error({ error, reset }: { error: Error; reset: () => void }) {
-  return (
-    <main className={s.main_error}>
-      <Text tag="h1" weight="bold" view="title">
-        An error has occurred
-      </Text>
-      <Text view="p-20">{error.message}</Text>
-      <Button onClick={() => reset()}>Try again</Button>
-    </main>
-  );
-}
+export default ErrorPage;

@@ -1,0 +1,7 @@
+@use "@styles/mixins" as *;
+
+.main {
+  height: 100vh;
+  @include grid-center;
+  @include padding-page;
+}

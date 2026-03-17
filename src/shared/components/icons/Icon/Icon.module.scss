@@ -1,52 +1,43 @@
-@use '@styles/variables' as var;
+@use "@styles/variables" as var;
 
-.icon{
-
-  &_fill path{
+.icon {
+  &_fill path {
     fill: inherit;
   }
 
-  &_stroke path{
+  &_stroke path {
     stroke: inherit;
   }
 
-  &_color{
-
-    &-primary{
-
-      &-fill path{
+  &_color {
+    &_primary {
+      &-fill path {
         fill: black;
       }
 
-      &-stroke path{
+      &-stroke path {
         stroke: black;
       }
     }
 
-    &-secondary{
-
-      &-fill path{
-        fill: #AFADB5;
+    &_secondary {
+      &-fill path {
+        fill: #afadb5;
       }
 
-      &-stroke path{
-        stroke: #AFADB5;
+      &-stroke path {
+        stroke: #afadb5;
       }
     }
 
-    &-accent{
-
-      &-fill path{
+    &_accent {
+      &-fill path {
         fill: var.$brand;
       }
 
-      &-stroke path{
+      &-stroke path {
         stroke: var.$brand;
       }
     }
-    
   }
-
-  
-
 }

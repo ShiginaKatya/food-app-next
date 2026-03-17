@@ -1,7 +1,0 @@
-@use '@styles/mixins' as *;
-@use '@styles/variables' as var;
-
-.main_error{
-  height: 100vh;
-  @include grid-center;
-}

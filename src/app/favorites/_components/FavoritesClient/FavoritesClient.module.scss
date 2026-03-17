@@ -1,0 +1,35 @@
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
+
+.main {
+  min-height: 100vh;
+  display: grid;
+  gap: calc(2 * var.$space-xl);
+  align-content: start;
+  @include padding-page;
+
+  @include mobile {
+    gap: var.$space-xl;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: calc(4 * var.$space-m);
+    justify-content: space-between;
+    align-items: stretch;
+
+    @include mobile {
+      gap: var.$space-m;
+    }
+
+    &-loader_s{
+      @include flex-center;
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__loader {
+    @include page-loader;
+  }
+}

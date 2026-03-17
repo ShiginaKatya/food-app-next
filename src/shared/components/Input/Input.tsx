@@ -1,7 +1,6 @@
 'use client';
-import React from 'react';
-
 import classNames from 'classnames';
+import * as React from 'react';
 
 import s from './Input.module.scss';
 
@@ -41,4 +40,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-export default Input;
+export default React.memo(Input);

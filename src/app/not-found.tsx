@@ -1,13 +1,5 @@
-import Text from '@/shared/components/Text';
+import NotFound from '@components/NotFound';
 
-import s from './error.module.scss';
-
-export default function NotFound() {
-  return (
-    <main className={s.main_error}>
-      <Text view="title" weight="bold">
-        Page not found 404
-      </Text>
-    </main>
-  );
+export default function NotFoundPage() {
+  return <NotFound />;
 }

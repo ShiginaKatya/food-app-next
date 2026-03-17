@@ -1,7 +1,6 @@
 'use client';
-import { useMemo } from 'react';
-
 import classNames from 'classnames';
+import React, { useMemo } from 'react';
 
 import ArrowDownIcon from '@components/icons/ArrowDownIcon';
 
@@ -29,7 +28,8 @@ const Pagination = ({ stopPage, allPages, onPageChange }: Props) => {
   return (
     <div className={s.paginate}>
       <button
-        className={classNames(s.paginate__arrow, s.paginate__arrow_left)}
+        type="button"
+        className={classNames(s.paginate__arrow, s.paginate__btn, s['paginate__arrow_left'])}
         onClick={() => onPageChange(stopPage - 1)}
         disabled={stopPage === 1}
       >
@@ -37,10 +37,11 @@ const Pagination = ({ stopPage, allPages, onPageChange }: Props) => {
       </button>
       {paginatePages.map((page, index) => (
         <button
+          type="button"
           key={index}
           onClick={() => typeof page === 'number' && onPageChange(page)}
-          className={classNames(s.paginate__numbers, {
-            [s.paginate__numbers_active]: page === stopPage,
+          className={classNames(s.paginate__numbers, s.paginate__btn, {
+            [s['paginate__numbers_active']]: page === stopPage,
           })}
           disabled={page === '...'}
         >
@@ -48,7 +49,8 @@ const Pagination = ({ stopPage, allPages, onPageChange }: Props) => {
         </button>
       ))}
       <button
-        className={classNames(s.paginate__arrow, s.paginate__arrow_right)}
+        type="button"
+        className={classNames(s.paginate__arrow, s.paginate__btn, s['paginate__arrow_right'])}
         onClick={() => onPageChange(stopPage + 1)}
         disabled={stopPage === allPages}
       >
@@ -58,4 +60,4 @@ const Pagination = ({ stopPage, allPages, onPageChange }: Props) => {
   );
 };
 
-export default Pagination;
+export default React.memo(Pagination);

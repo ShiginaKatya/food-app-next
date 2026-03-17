@@ -1,8 +1,7 @@
 'use client';
+import classNames from 'classnames';
 import Image from 'next/image';
 import * as React from 'react';
-
-import classNames from 'classnames';
 
 import Text from '../Text';
 import s from './Card.module.scss';

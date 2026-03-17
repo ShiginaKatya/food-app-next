@@ -1,0 +1,139 @@
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
+
+.main {
+  min-height: 100vh;
+
+  &__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1440 / 572;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    margin-bottom: var.$space-xxs;
+
+    @include tablet {
+      object-fit: cover;
+      height: 360px;
+      max-width: var.$breakpoint-md;
+    }
+  }
+
+  &__content {
+    position: relative;
+    min-height: 400px;
+    display: grid;
+    gap: calc(2 * var.$space-xl);
+    @include padding-page;
+
+    @include mobile {
+      gap: var.$space-xl;
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    &_decor {
+      text-decoration: underline;
+    }
+  }
+
+  &__inputs {
+    display: grid;
+    gap: var.$space-l;
+
+    @include mobile {
+      gap: calc(var.$space-l / 2);
+    }
+  }
+
+  &__search {
+    display: flex;
+    justify-content: space-between;
+    gap: var.$space-l;
+
+    @include mobile {
+      gap: calc(var.$space-l / 2);
+    }
+
+    &-input {
+      flex-grow: 1;
+    }
+
+    &-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font-family: inherit;
+      font-size: 24px;
+      color: var.$brand-disabled;
+      cursor: pointer;
+      outline: inherit;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &-icon_white path {
+      fill: white;
+    }
+  }
+
+  &__drops {
+    display: flex;
+    justify-content: flex-end;
+    gap: var.$space-l;
+    flex-wrap: wrap;
+
+    @include mobile {
+      gap: calc(var.$space-l / 2);
+    }
+
+    &-drop {
+      width: 300px;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: var.$space-l;
+    flex-wrap: wrap;
+
+    @include mobile {
+      gap: calc(var.$space-l / 2);
+    }
+
+    &-field {
+      width: 300px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: calc(4 * var.$space-m);
+    justify-content: space-between;
+    align-items: stretch;
+
+    @include mobile {
+      gap: var.$space-m;
+    }
+
+    &-loader_s {
+      grid-column: 1 / -1;
+      @include flex-center;
+    }
+  }
+
+  &__recent {
+    display: grid;
+    gap: var.$space-l;
+  }
+
+  &__loader {
+    @include page-loader;
+  }
+}

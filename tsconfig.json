@@ -24,7 +24,8 @@
       "@components/*": ["./src/shared/components/*"],
       "@styles/*": ["./src/shared/styles/*"],
       "@api/*": ["./src/api/*"],
-      "@public/*": ["./public/*"]
+      "@public/*": ["./public/*"],
+      "@hooks/*": ["./src/shared/hooks/*"]
      }
   },
   "include": [

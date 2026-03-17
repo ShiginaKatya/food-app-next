@@ -1,0 +1,6 @@
+@use "@styles/variables" as var;
+@use "@styles/mixins" as *;
+
+.loader {
+  @include page-loader;
+}

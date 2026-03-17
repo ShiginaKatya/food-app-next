@@ -1,7 +1,6 @@
 'use client';
-import { useState, useEffect } from 'react';
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useState, useEffect } from 'react';
 
 import { getJWT } from '@/api/register_auth';
 
