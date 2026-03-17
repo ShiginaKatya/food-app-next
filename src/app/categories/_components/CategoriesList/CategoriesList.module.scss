@@ -10,6 +10,7 @@
     border: 1px solid black;
     padding: var.$space-s;
     border-radius: var.$border-radius;
+    transition: border-color 0.3s, color 0.3s;
 
     &:hover {
       border-color: var.$brand;

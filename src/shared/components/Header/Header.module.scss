@@ -40,6 +40,10 @@
     justify-content: flex-start;
     gap: var.$space-m;
 
+    &-link p {
+      transition: color 0.3s;
+    }
+
     &-link:hover p {
       font-weight: 600 !important;
       color: var.$brand;

@@ -3,4 +3,5 @@
 .main {
   height: 100vh;
   @include grid-center;
+  @include padding-page;
 }

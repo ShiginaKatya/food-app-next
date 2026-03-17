@@ -72,7 +72,6 @@
       color: var.$brand-disabled;
       cursor: pointer;
       outline: inherit;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
     }
@@ -122,6 +121,11 @@
     @include mobile {
       gap: var.$space-m;
     }
+
+    &-loader_s {
+      grid-column: 1 / -1;
+      @include flex-center;
+    }
   }
 
   &__recent {
@@ -131,9 +135,5 @@
 
   &__loader {
     @include page-loader;
-
-    &_s {
-      @include flex-center;
-    }
   }
 }

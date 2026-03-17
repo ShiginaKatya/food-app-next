@@ -29,6 +29,7 @@
     display: flex;
     margin: 0;
     list-style: none;
+    transition: color 0.3s ease;
 
     &_selected {
       color: var.$brand;

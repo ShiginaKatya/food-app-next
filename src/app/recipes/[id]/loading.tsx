@@ -1,13 +1,7 @@
-import Loader from '@/shared/components/Loader';
+import Loading from '@components/Loading';
 
-import s from './page.module.scss';
-
-const Loading = () => {
-  return (
-    <div className={s.loader}>
-      <Loader size="l" />
-    </div>
-  );
+const LoadingPage = () => {
+  return <Loading />;
 };
 
-export default Loading;
+export default LoadingPage;

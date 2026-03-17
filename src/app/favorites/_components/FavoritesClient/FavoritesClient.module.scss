@@ -22,13 +22,14 @@
     @include mobile {
       gap: var.$space-m;
     }
+
+    &-loader_s{
+      @include flex-center;
+      grid-column: 1 / -1;
+    }
   }
 
   &__loader {
     @include page-loader;
-
-    &_s {
-      @include flex-center;
-    }
   }
 }

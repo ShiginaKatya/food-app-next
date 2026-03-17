@@ -6,7 +6,3 @@
   display: grid;
   gap: calc(2 * var.$space-xl);
 }
-
-.loader {
-  @include page-loader;
-}

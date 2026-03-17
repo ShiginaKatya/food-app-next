@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import FavoritesClient from './_components/FavoritesClient/FavoritesClient';
+import FavoritesClient from './_components/FavoritesClient';
 
 export const metadata: Metadata = {
   title: 'Food Client | Favorites',

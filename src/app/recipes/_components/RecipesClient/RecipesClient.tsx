@@ -295,12 +295,12 @@ const RecipesClient = () => {
                 />
               );
             })}
+            {isFetching && (
+              <li className={s['main__list-loader_s']}>
+                <Loader size="s" />
+              </li>
+            )}
           </ul>
-        )}
-        {isFetching && (
-          <div className={s['main__loader_s']}>
-            <Loader size="s" />
-          </div>
         )}
         <Pagination
           stopPage={page}

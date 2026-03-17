@@ -1,5 +1,6 @@
 'use client';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
+import { useSyncExternalStore } from 'react';
 
 import { getRecipes, getRecipe, getCategories, getFavorites } from './requests';
 
@@ -49,7 +50,11 @@ export const useCategoriesQuery = () =>
   useQuery({ queryKey: ['categories'], queryFn: getCategories, staleTime: Infinity });
 
 export const useFavoritesQuery = () => {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const token = useSyncExternalStore(
+    () => () => {},
+    () => localStorage.getItem('token'),
+    () => null
+  );
   return useQuery({
     queryKey: ['favorites', token],
     queryFn: () => getFavorites(token),
